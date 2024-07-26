@@ -2,18 +2,16 @@ G21 ; Set units to millimeters
 G90 ; Use absolute coordinates
 G0 Z5 ; Lift the tool
 
-; Draw Square
-G0 X0 Y0 ; Move to start position
-G0 Z0 ; Lower the tool to drawing surface
-G1 X500 Y0 F1000 ; Draw bottom line
-G1 X500 Y500 ; Draw right line
-G1 X0 Y500 ; Draw top line
-G1 X0 Y0 ; Draw left line (return to start)
+; Move to the start position at the rightmost point of the circle
+G0 X250 Y0
 
-; Draw Circle
-G0 X250 Y250 ; Move to circle center
-G0 Z0 ; Ensure tool is at drawing surface
-G3 X250 Y250 I250 J0 F1000 ; Draw full circle (counterclockwise)
+; Lower the tool to the drawing surface
+G0 Z0
 
-G0 Z5 ; Lift the tool
+; Draw the circle in a clockwise direction
+G2 X250 Y0 I-250 J0
+
+; Lift the tool
+G0 Z5
+
 M2 ; End program
